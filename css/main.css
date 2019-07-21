@@ -689,6 +689,7 @@ input {
    #Miscellaneous
    ========================================================================== */
 .instruction {
+	padding-top: 20px;
 	display: none;
 }
 
