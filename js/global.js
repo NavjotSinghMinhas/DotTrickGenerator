@@ -9,22 +9,37 @@ function start() {
         alert("Username and Email Provider are mandatory.");
     }
     else {
-        document.getElementById("emailContainer").style.display = "none";
+		document.getElementById("emailContainer").style.display = "none";
+		document.getElementById("viewResult").style.display = "none";
         document.getElementById("loader").style.display = "block";
+		document.getElementById("emails").value = "";
 
         //Do the work
-        setTimeout(function () {
+        setTimeout(function() {
             getDotEmail(username, 1);
 
             document.getElementById("emails").value = emails;
 
-            //CLear previous results
+            //Clear variable
             emails = "";
 
             document.getElementById("loader").style.display = "none";
-            document.getElementById("emailContainer").style.display = "block";
+            
+			if(username.length <= 18)
+				document.getElementById("emailContainer").style.display = "block";
+			else
+				document.getElementById("viewResult").style.display = "block";
         }, 20);
     }
+}
+
+function showEmailContainer() {
+	document.getElementById("viewResult").style.display = "none";
+	document.getElementById("loader").style.display = "block";
+	setTimeout(function() {
+		document.getElementById("emailContainer").style.display = "block";
+		document.getElementById("loader").style.display = "none";
+	}, 20);
 }
 
 function getDotEmail(email, position) {
